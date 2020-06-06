@@ -18,11 +18,9 @@ const Nome = styled.div`
   grid-area: nome;
   margin-bottom: 8%;  
 `
-
 const DivAgora = styled.div`  
   margin-top: -8%;  
 `
-
 const DivInput = styled.div`
   margin-top: -7%;
   input{
@@ -30,21 +28,17 @@ const DivInput = styled.div`
     padding: 5%;
   }
 `
-
 const DivResult = styled.div`
   background-color: #c0d9e0;
   font-size: 0.7em; 
 `
-
 const MinMax = styled.div`
   background-color: #c0d9e0;
   font-size: 0.8em;    
 `
-
 const Porcent = styled.div`
   background-color: #c0d9e0;
 `
-
 const ImgBtc = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
@@ -64,42 +58,38 @@ const variacao = (parseFloat(btcValor.varBid).toFixed(2));
 const pctChange = (parseFloat(btcValor.pctChange).toFixed(2));
 const resultado = (parseFloat(valorReal * comprarBtc).toFixed(2));
 
-
-
-
-
-    useEffect(() => {
+  useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/BTC-BRL').then(response => {
-    console.log(response.data)
-    setBtcValor(response.data.BTC)     
+      console.log(response.data)
+      setBtcValor(response.data.BTC)     
     })
   }, [setBtcValor]);  
 
     return (
       <Container>
-      <Nome>
-        <h1 className="nome">BITCOIN</h1>        
-      </Nome>
-      <DivAgora>
-        <h3>Agora: R$ <strong>{comprarBtc}</strong></h3>
-      </DivAgora>
-      <DivInput>
-        <input type="text" placeholder="Valor em Btc" onChange={e => setValorReal(e.target.value)} ></input>
-      </DivInput>
-      <DivResult>
-        <h1>R$ {resultado}</h1>
-      </DivResult>
-      <MinMax>
-        <p>Máx. R$ {alta}</p>
-        <p>Mín. R$ {baixa}</p>
-      </MinMax>
-      <p>vender R$ {venderBtc}</p>
-      <p>Var. R$ {variacao}</p>
-      <Porcent>
-        <p>Porc. da variação  {pctChange}%</p>
-      </Porcent>
-      <ImgBtc></ImgBtc>
-    </Container>
+        <Nome>
+          <h1 className="nome">BITCOIN</h1>        
+        </Nome>
+        <DivAgora>
+          <h3>Agora: R$ <strong>{comprarBtc}</strong></h3>
+        </DivAgora>
+        <DivInput>
+          <input type="text" placeholder="Valor em Btc" onChange={e => setValorReal(e.target.value)} ></input>
+        </DivInput>
+        <DivResult>
+          <h1>R$ {resultado}</h1>
+        </DivResult>
+        <MinMax>
+          <p>Máx. R$ {alta}</p>
+          <p>Mín. R$ {baixa}</p>
+        </MinMax>
+          <p>vender R$ {venderBtc}</p>
+          <p>Var. R$ {variacao}</p>
+        <Porcent>
+          <p>Porc. da variação  {pctChange}%</p>
+        </Porcent>
+        <ImgBtc></ImgBtc>
+      </Container>
     )
   }
 

@@ -16,13 +16,11 @@ const Container = styled.div`
 const Nome = styled.div`  
   background-color: #c0d9e0;
   grid-area: nome;
-  margin-bottom: 6%;  
+  margin-bottom: 8%;  
 `
-
 const DivAgora = styled.div`
-  margin-top: -10%;  
+  margin-top: -8%;  
 `
-
 const DivInput = styled.div`
   margin-top: -7%;
   input{
@@ -38,11 +36,9 @@ const MinMax = styled.div`
   background-color: #c0d9e0;
   font-size: 0.8em;    
 `
-
 const Porcent = styled.div`
   background-color: #c0d9e0;
 `
-
 const ImgDolar = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
@@ -51,7 +47,6 @@ const ImgDolar = styled.div`
 `
 
 const ConversorDolarReal = () =>  {
-
 const [dolarValor, setDolarValor] = useState([])
 const [valorReal, setValorReal] = useState (0)
 
@@ -64,10 +59,10 @@ const pctChange = (parseFloat(dolarValor.pctChange).toFixed(2));
 const resultado = (parseFloat(valorReal * comprarDolar).toFixed(2));
 
   useEffect(() => {
-  axios.get('https://economia.awesomeapi.com.br/json/all/USD-BRL').then(response => {
-  console.log(response.data)
-  setDolarValor(response.data.USD)     
-  })
+    axios.get('https://economia.awesomeapi.com.br/json/all/USD-BRL').then(response => {
+      console.log(response.data)
+      setDolarValor(response.data.USD)     
+    })
   }, [setDolarValor]);  
 
   return (
@@ -88,8 +83,8 @@ const resultado = (parseFloat(valorReal * comprarDolar).toFixed(2));
         <p>Máx. R$ {alta}</p>
         <p>Mín. R$ {baixa}</p>
       </MinMax>
-      <p>vender R$ {venderDolar}</p>
-      <p>Var. R$ {variacao}</p>
+        <p>vender R$ {venderDolar}</p>
+        <p>Var. R$ {variacao}</p>
       <Porcent>
         <p>Porc. da variação  {pctChange}%</p>
       </Porcent>

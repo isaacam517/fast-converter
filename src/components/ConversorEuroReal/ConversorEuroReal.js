@@ -72,7 +72,7 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
     })
   }, [setEuroValor]);  
 
-     return (
+    return (
       <Container>
         <Nome>
           <h1 className="nome">Euro</h1>        
@@ -86,17 +86,16 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
         <DivResult>
           <h1>R$ {resultado}</h1>
         </DivResult>
-      <MinMax>
-        <p>Máx. R$ {alta}</p>
-        <p>Mín. R$ {baixa}</p>
-      </MinMax>
-      <p>vender R$ {venderEuro}</p>
-      <p>Var. R$ {variacao}</p>
-      <Porcent>
-        <p>Porc. da variação  {pctChange}%</p>
-      </Porcent>
-     <ImgEuro></ImgEuro>
-
+        <MinMax>
+          <p>Máx. R$ {alta}</p>
+          <p>Mín. R$ {baixa}</p>
+        </MinMax>
+          <p>vender R$ {venderEuro}</p>
+          <p>Var. R$ {variacao}</p>
+        <Porcent>
+          <p>Porc. da variação  {pctChange}%</p>
+        </Porcent>
+        <ImgEuro></ImgEuro>
       </Container>
     )
   }

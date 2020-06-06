@@ -18,11 +18,9 @@ const Nome = styled.div`
   grid-area: nome;
   margin-bottom: 8%;  
 `
-
 const DivAgora = styled.div`
   margin-top: -8%;  
 `
-
 const DivInput = styled.div`
   margin-top: -7%;
   input{
@@ -30,21 +28,17 @@ const DivInput = styled.div`
     padding: 5%;
   }
 `
-
 const DivResult = styled.div`
   background-color: #c0d9e0;
   font-size: 0.7em;
 `
-
 const MinMax = styled.div`
   background-color: #c0d9e0;
   font-size: 0.8em;    
 `
-
 const Porcent = styled.div`
   background-color: #c0d9e0;
 `
-
 const ImgYuan = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
@@ -53,7 +47,6 @@ const ImgYuan = styled.div`
 `
 
 const ConversorYuanReal = () =>  {
-
 const [yuanValor, setYuanValor] = useState([])
 const [valorReal, setValorReal] = useState (0)
 
@@ -65,37 +58,37 @@ const variacao = (parseFloat(yuanValor.varBid).toFixed(2));
 const pctChange = (parseFloat(yuanValor.pctChange).toFixed(2));
 const resultado = (parseFloat(valorReal * comprarYuan).toFixed(2));
 
-    useEffect(() => {
+  useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/CNY-BRL').then(response => {
-    console.log(response.data)
-    setYuanValor(response.data.CNY)     
+      console.log(response.data)
+      setYuanValor(response.data.CNY)     
     })
   }, [setYuanValor]);  
 
     return (
       <Container>
-      <Nome>
-        <h1 className="nome">YUAN</h1>        
-      </Nome>
-      <DivAgora>
-        <h3>Agora: R$ <strong>{comprarYuan}</strong></h3>
-      </DivAgora>
-      <DivInput>
-        <input type="text" placeholder="Digite em Yuan" onChange={e => setValorReal(e.target.value)} ></input>
-      </DivInput>
-      <DivResult>
-        <h1>R$ {resultado}</h1>
-      </DivResult>
-      <MinMax>
-        <p>Máx. R$ {alta}</p>
-        <p>Mín. R$ {baixa}</p>
-      </MinMax>
-      <p>vender R$ {venderYuan}</p>
-      <p>Var. R$ {variacao}</p>
-      <Porcent>
-        <p>Porc. da variação  {pctChange}%</p>
-      </Porcent>
-      <ImgYuan></ImgYuan>
+        <Nome>
+          <h1 className="nome">YUAN</h1>        
+        </Nome>
+        <DivAgora>
+          <h3>Agora: R$ <strong>{comprarYuan}</strong></h3>
+        </DivAgora>
+        <DivInput>
+          <input type="text" placeholder="Digite em Yuan" onChange={e => setValorReal(e.target.value)} ></input>
+        </DivInput>
+        <DivResult>
+          <h1>R$ {resultado}</h1>
+        </DivResult>
+        <MinMax>
+          <p>Máx. R$ {alta}</p>
+          <p>Mín. R$ {baixa}</p>
+        </MinMax>
+          <p>vender R$ {venderYuan}</p>
+          <p>Var. R$ {variacao}</p>
+        <Porcent>
+          <p>Porc. da variação  {pctChange}%</p>
+        </Porcent>
+        <ImgYuan></ImgYuan>
     </Container>
     )
   }
