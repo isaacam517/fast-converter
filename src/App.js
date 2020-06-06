@@ -38,7 +38,7 @@ const Topo = styled.div`
   text-align: center;
   @media screen and (max-width:480px) {
     font-size: 0.8em;
-    height: 15vh;
+    height: 20vh;
     width: 100vw;
     grid-area: 2;    
   }
@@ -46,8 +46,8 @@ const Topo = styled.div`
 const Ancora = styled.div`
   img {
     margin-left: 3px;
-    width: 30px;
-    height: 15px; 
+    width: 60px;
+    height: 35px; 
   }
 `
 const Cards = styled.div`
