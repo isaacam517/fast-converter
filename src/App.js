@@ -17,6 +17,7 @@ import shekel from './components/ConversorShekelReal/img/shekel.png';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  background-color: #D4A3F1;
   display: grid;
     grid-template-areas: 'logo' 'topo' 'advert'
                           'sidenav' 'cards' 'advert' 
@@ -33,7 +34,8 @@ const Container = styled.div`
   }
 `
 const Logo = styled.div`
-  background-color: #e2843e;
+  
+  padding-left: 35%;
   @media screen and (max-width:480px) {      
     font-size: 0.7em;
     padding-left: 2%;
@@ -41,12 +43,13 @@ const Logo = styled.div`
   }
 `
 const Topo = styled.div`
-  background-color: #e2843e;  
+   
   text-align: center;
   @media screen and (max-width:480px) {
     font-size: 0.8em;
-    height: 25vh;
+    height: 35vh;
     width: 100vw;
+    padding-bottom: 10%;
     grid-area: 2;    
   }
 `
@@ -57,15 +60,12 @@ const Ancora = styled.div`
   img {
     margin-left: 3px;
     width: 60px;
-    height: 35px;
-    
-    
-        
+    height: 35px;        
   } 
-  }
+  
 `
 const Cards = styled.div`
-  background-color: #e2843e;
+ 
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 2vw;
@@ -77,7 +77,7 @@ const Cards = styled.div`
   }
 `
 const Sidenav = styled.div`
-  background-color: #e2843e;
+  
   text-align: center;
   @media screen and (max-width:480px) {
     display: grid;
@@ -87,7 +87,7 @@ const Sidenav = styled.div`
 `
 const Advert1 = styled.div`
   text-align: center;
-  background-color: #e2843e;
+  
   @media screen and (max-width:480px) {    
       display: grid;
       grid-area: 5 ;
@@ -95,7 +95,7 @@ const Advert1 = styled.div`
   }
 `
 const Advert2 = styled.div`
-  background-color: #e2843e;
+  
   @media screen and (max-width:480px) {
     text-align: center;
     display: grid;
@@ -105,7 +105,7 @@ const Advert2 = styled.div`
 `
 const Footer1 = styled.div`
   text-align: center;
-  background-color: #e2843e;
+  
   @media screen and (max-width:480px) {
     display: grid;
     grid-area: 7 ;
@@ -114,7 +114,7 @@ const Footer1 = styled.div`
 `
 const Footer2 = styled.div`
   text-align: center;
-  background-color: #e2843e;
+  
   @media screen and (max-width:480px) {
     display: grid;
     grid-area: 8 ;
@@ -123,7 +123,7 @@ const Footer2 = styled.div`
 `
 const Footer3 = styled.div`
   text-align: center;
-  background-color: #e2843e;
+  
   @media screen and (max-width:480px) {
     display: grid;
     grid-area: 9 ;
@@ -154,8 +154,8 @@ function App() {
             <a href="#"><img src={shekel}/></a>                     
         </Ancora>       
       </Topo>
-      <Advert1>advert</Advert1>
-      <Sidenav>sidenav</Sidenav>
+      <Advert1></Advert1>
+      <Sidenav></Sidenav>
       <Cards>
         <div id="dolar">                
           <ConversorDolarReal/>          
@@ -170,10 +170,10 @@ function App() {
           <ConversorYuanReal/>          
         </div>         
       </Cards>
-      <Advert2>advert</Advert2>
-      <Footer1>footer</Footer1>
-      <Footer2>footer</Footer2>
-      <Footer3 >footer</Footer3>
+      <Advert2></Advert2>
+      <Footer1></Footer1>
+      <Footer2></Footer2>
+      <Footer3>footer</Footer3>
     </Container>
   );
 }

@@ -20,11 +20,12 @@ const Nome = styled.div`
 `
 
 const DivAgora = styled.div`
-  margin-top: -8%;  
+background-color: #c0d9e0;
+    
 `
 
 const DivInput = styled.div`
-  margin-top: -7%;
+  margin-top: -13%;
   input{
     width: 60%;
     padding: 5%;
@@ -32,8 +33,8 @@ const DivInput = styled.div`
 `
 
 const DivResult = styled.div`
-  background-color: #c0d9e0;
-  font-size: 0.8em;
+  margin-top: -8%;
+  font-size: 0.7em;
 `
 
 const MinMax = styled.div`
@@ -46,7 +47,8 @@ const Porcent = styled.div`
 `
 
 const ImgEuro = styled.div`
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  height: 12vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   background-color: #c0d9e0;
   background-image: url(${euro});
   background-size: cover;
@@ -77,15 +79,15 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
         <Nome>
           <h1 className="nome">Euro</h1>        
         </Nome>
-        <DivAgora>
-          <h3>Agora: R$ <strong>{comprarEuro}</strong></h3>
-        </DivAgora>
-        <DivInput>
-          <input type="text" placeholder="Digite em Euro" onChange={e => setValorReal(e.target.value)} ></input>
-        </DivInput>
         <DivResult>
           <h1>R$ {resultado}</h1>
         </DivResult>
+        <DivInput>
+          <input type="text" placeholder="Valor aqui" onChange={e => setValorReal(e.target.value)} ></input>
+        </DivInput>
+        <DivAgora>
+          <h3>Agora: R$ <strong>{comprarEuro}</strong></h3>
+        </DivAgora>
         <MinMax>
           <p>Máx. R$ {alta}</p>
           <p>Mín. R$ {baixa}</p>
