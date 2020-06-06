@@ -7,6 +7,13 @@ import dolar from './components/ConversorDolarReal/img/dolar.png';
 import euro from './components/ConversorEuroReal/img/euro.png';
 import yuan from './components/ConversorYuanReal /img/yuan.jpg';
 import bit from './components/ConversorBtcReal /img/bit.jpg';
+import dolarcad from './components/ConversorDolarCadReal/img/dolarcad.png';
+import franco from './components/ConversorFrancoReal/img/franco.png';
+import lene from './components/ConversorLeneReal /img/lene.png'
+import libras from './components/ConversorLibraReal/img/libras.png';
+import peso from './components/ConversorPesoReal/img/peso.png';
+import shekel from './components/ConversorShekelReal/img/shekel.png';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -38,16 +45,23 @@ const Topo = styled.div`
   text-align: center;
   @media screen and (max-width:480px) {
     font-size: 0.8em;
-    height: 20vh;
+    height: 25vh;
     width: 100vw;
     grid-area: 2;    
   }
 `
 const Ancora = styled.div`
+  width: 90vw;
+  margin: auto;
+  
   img {
     margin-left: 3px;
     width: 60px;
-    height: 35px; 
+    height: 35px;
+    
+    
+        
+  } 
   }
 `
 const Cards = styled.div`
@@ -131,7 +145,13 @@ function App() {
             <a href="#dolar"><img src={dolar}/></a>
             <a href="#euro"><img src={euro}/></a>
             <a href="#bit"><img src={bit}/></a>
-            <a href="#yuan"><img src={yuan}/></a>          
+            <a href="#yuan"><img src={yuan}/></a>
+            <a href="#"><img src={dolarcad}/></a>
+            <a href="#"><img src={franco}/></a>
+            <a href="#"><img src={lene}/></a>
+            <a href="#"><img src={libras}/></a>
+            <a href="#"><img src={peso}/></a>
+            <a href="#"><img src={shekel}/></a>                     
         </Ancora>       
       </Topo>
       <Advert1>advert</Advert1>
