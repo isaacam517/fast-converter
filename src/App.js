@@ -27,16 +27,17 @@ const Logo = styled.div`
   background-color: #e2843e;
   @media screen and (max-width:480px) {      
     font-size: 0.7em;
-    padding: 5px;                
+    padding-left: 2%;
+                    
   }
 `
 
 const Topo = styled.div`
   background-color: #e2843e;  
-  font-size: 1.1em;
+  font-size: 1em;
   text-align: center;
   @media screen and (max-width:480px) {
-    font-size: 1em;
+    font-size: 0.8em;
     height: 10vh;
     width: 100vw;
     grid-area: 2;    
@@ -119,7 +120,7 @@ function App() {
         <h3>iMartiniano </h3>
       </Logo>
       <Topo>
-        <h1>CONVERTA FAST</h1>
+        <h1>FAST CONVERTER</h1>
       </Topo>
       <Advert1>advert</Advert1>
       <Sidenav>sidenav</Sidenav>
