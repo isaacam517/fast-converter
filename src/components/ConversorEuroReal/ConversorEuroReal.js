@@ -8,10 +8,8 @@ const Container = styled.div`
   padding: 3%;    
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   display:grid;
-  grid-template-areas: "nome nome"
-                        "input resultado";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 8vw 3vw 5vw 3vw 5vw;
+  grid-template-areas: "nome nome";
+  grid-template-columns: 1.7fr 1fr;  
   text-align: center;
   color:black;
 `
@@ -28,16 +26,19 @@ const DivAgora = styled.div`
 const DivInput = styled.div`
   margin-top: -7%;
   input{
+    width: 60%;
     padding: 5%;
   }
 `
 
 const DivResult = styled.div`
   background-color: #c0d9e0;
+  font-size: 0.8em;
 `
 
 const MinMax = styled.div`
-  background-color: #c0d9e0;    
+  background-color: #c0d9e0;
+  font-size: 0.8em;    
 `
 
 const Porcent = styled.div`
@@ -80,7 +81,7 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
           <h3>Agora: R$ <strong>{comprarEuro}</strong></h3>
         </DivAgora>
         <DivInput>
-          <input type="text" placeholder="Digite aqui o valor em Dolar" onChange={e => setValorReal(e.target.value)} ></input>
+          <input type="text" placeholder="Digite em Euro" onChange={e => setValorReal(e.target.value)} ></input>
         </DivInput>
         <DivResult>
           <h1>R$ {resultado}</h1>
@@ -90,7 +91,7 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
         <p>Mín. R$ {baixa}</p>
       </MinMax>
       <p>vender R$ {venderEuro}</p>
-      <p>Variação R$ {variacao}</p>
+      <p>Var. R$ {variacao}</p>
       <Porcent>
         <p>Porc. da variação  {pctChange}%</p>
       </Porcent>

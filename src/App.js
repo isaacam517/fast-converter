@@ -12,61 +12,127 @@ const Container = styled.div`
                           'footer' 'footer' 'footer';
 
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 10vw auto 10vw;
+    grid-template-rows: 10vh auto 10vh;
+    @media screen and (max-width:480px) {
+      width: 100vw;     
+      display: grid;
+      grid-template-areas: '1 2 3 4 5 6 7 8';                         
+    grid-template-columns: 1fr ;
+    grid-template-rows: 5vh auto;        
+  }
 `
 
+
+const Logo = styled.div`
+  background-color: #e2843e;
+  @media screen and (max-width:480px) {      
+    font-size: 0.7em;
+    padding: 5px;                
+  }
+`
+
+const Topo = styled.div`
+  background-color: #e2843e;  
+  font-size: 1.1em;
+  text-align: center;
+  @media screen and (max-width:480px) {
+    font-size: 1em;
+    height: 10vh;
+    width: 100vw;
+    grid-area: 2;    
+  }
+`
 const Cards = styled.div`
-background-color: #e2843e;
+  background-color: #e2843e;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 2vw;
   column-gap: 2vh;
-`
-
-const Logo = styled.div`
-  background-color: #e2843e;
-`
-
-const Topo = styled.div`
-  background-color: #e2843e;
-  font-size: 2em;
-  text-align: center;
+  @media screen and (max-width:480px) {
+      display: grid;
+      grid-area: 3;
+    grid-template-columns: 1fr ;    
+  }
 `
 
 const Sidenav = styled.div`
   background-color: #e2843e;
+  text-align: center;
+  @media screen and (max-width:480px) {
+    display: grid;
+    grid-area: 4;
+    grid-template-columns: 1fr ;    
+  }
 `
 
-const Advert = styled.div`
+const Advert1 = styled.div`
+  text-align: center;
   background-color: #e2843e;
+  @media screen and (max-width:480px) {    
+      display: grid;
+      grid-area: 5 ;
+        
+  }
 `
-
-const Footer = styled.div`
+const Advert2 = styled.div`
   background-color: #e2843e;
+  @media screen and (max-width:480px) {
+    text-align: center;
+    display: grid;
+    grid-area: 6 ;
+    grid-template-columns: 1fr;    
+  }
 `
 
+const Footer1 = styled.div`
+  text-align: center;
+  background-color: #e2843e;
+  @media screen and (max-width:480px) {
+    display: grid;
+    grid-area: 7 ;
+    grid-template-columns: 1fr ;    
+  }
+`
+const Footer2 = styled.div`
+  text-align: center;
+  background-color: #e2843e;
+  @media screen and (max-width:480px) {
+    display: grid;
+    grid-area: 8 ;
+    grid-template-columns: 1fr ;    
+  }
+`
+const Footer3 = styled.div`
+  text-align: center;
+  background-color: #e2843e;
+  @media screen and (max-width:480px) {
+    display: grid;
+    grid-area: 9 ;
+    grid-template-columns: 1fr ;    
+  }
+`
 
 function App() {
   return (
     <Container>
-      <Logo className="logo">
+      <Logo>
         <h3>iMartiniano </h3>
       </Logo>
-      <Topo className="topo">
+      <Topo>
         <h1>CONVERTA FAST</h1>
       </Topo>
-      <Advert className="advert">advert</Advert>
-      <Sidenav className="sidenav">sidenav</Sidenav>
+      <Advert1>advert</Advert1>
+      <Sidenav>sidenav</Sidenav>
       <Cards>                
-        <ConversorDolarReal className="item"/>
-        <ConversorEuroReal className="item"/>
-        <ConversorBtcReal className="item"/>
-        <ConversorYuanReal className="item"/>            
+        <ConversorDolarReal/>
+        <ConversorEuroReal/>
+        <ConversorBtcReal/>
+        <ConversorYuanReal/>            
       </Cards>
-      <Advert className="advert">advert</Advert>
-      <Footer className="footer">footer</Footer>
-      <Footer className="footer">footer</Footer>
-      <Footer className="footer">footer</Footer>
+      <Advert2>advert</Advert2>
+      <Footer1>footer</Footer1>
+      <Footer2>footer</Footer2>
+      <Footer3>footer</Footer3>
     </Container>
   );
 }
