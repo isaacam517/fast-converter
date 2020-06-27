@@ -9,7 +9,7 @@ const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   display:grid;
   grid-template-areas: "nome nome";
-  grid-template-columns: 1.7fr 1fr;  
+  grid-template-columns:  0.9fr 1.3fr;  
   text-align: center;
   color:black;
 `
@@ -18,40 +18,47 @@ const Nome = styled.div`
   grid-area: nome;
   margin-bottom: 8%;  
 `
-
 const DivAgora = styled.div`
-background-color: #c0d9e0;
-    
+background-color: #c0d9e0;    
 `
-
 const DivInput = styled.div`
-  margin-top: -13%;
+  margin-top: -16%;
   input{
     width: 60%;
     padding: 5%;
+    margin: 2%;
+  }
+  @media screen and (max-width:480px) {
+    margin-top: -14%;
+    input{
+      width: 60%;
+      padding: 10%;
+    }
   }
 `
-
 const DivResult = styled.div`
-  margin-top: -8%;
+  margin-top: -15%;
   font-size: 0.7em;
+  @media screen and (max-width:480px) {
+    margin-top: -8%;
+  }
 `
-
 const MinMax = styled.div`
   background-color: #c0d9e0;
   font-size: 0.8em;    
 `
-
 const Porcent = styled.div`
   background-color: #c0d9e0;
 `
-
 const ImgEuro = styled.div`
-  height: 12vh;
+  height: 14vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   background-color: #c0d9e0;
   background-image: url(${euro});
   background-size: cover;
+  @media screen and (max-width:480px) {
+    height: 8vh; 
+  }
     
 `
 const ConversorEuroReal = () =>  {
@@ -65,7 +72,7 @@ const baixa = (parseFloat(euroValor.low).toFixed(2));
 const venderEuro = (parseFloat(euroValor.ask).toFixed(2));
 const variacao = (parseFloat(euroValor.varBid).toFixed(2));
 const pctChange = (parseFloat(euroValor.pctChange).toFixed(2));
-const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
+const resultado = (parseFloat(valorReal * comprarEuro).toLocaleString('pt-BR'));
 
     useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/EUR-BRL').then(response => {
@@ -79,12 +86,12 @@ const resultado = (parseFloat(valorReal * comprarEuro).toFixed(2));
         <Nome>
           <h1 className="nome">Euro</h1>        
         </Nome>
+        <DivInput>
+          <input type="number" maxLength="7" placeholder="Valor aqui" onChange={e => setValorReal(e.target.value)} ></input>
+        </DivInput>
         <DivResult>
           <h1>R$ {resultado}</h1>
         </DivResult>
-        <DivInput>
-          <input type="text" placeholder="Valor aqui" onChange={e => setValorReal(e.target.value)} ></input>
-        </DivInput>
         <DivAgora>
           <h3>Agora: R$ <strong>{comprarEuro}</strong></h3>
         </DivAgora>
