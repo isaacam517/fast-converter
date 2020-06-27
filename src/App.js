@@ -17,7 +17,7 @@ import shekel from './components/ConversorShekelReal/img/shekel.png';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background-color: #D4A3F1;
+  background-color: #F1E1F6;
   display: grid;
     grid-template-areas: 'logo' 'topo' 'advert'
                           'sidenav' 'cards' 'advert' 
@@ -47,7 +47,7 @@ const Topo = styled.div`
   text-align: center;
   @media screen and (max-width:480px) {
     font-size: 0.8em;
-    height: 35vh;
+    height: 15vh;
     width: 100vw;
     padding-bottom: 10%;
     grid-area: 2;    
@@ -58,6 +58,7 @@ const Ancora = styled.div`
   margin: auto;
   
   img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
     margin-left: 3px;
     width: 60px;
     height: 35px;        
