@@ -15,14 +15,14 @@ const real = (parseFloat(1 / euro).toFixed(2));
 
     useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/EUR-BRL').then(response => {
-    console.log(response.data)
+   
     setEuroValor(response.data.EUR)     
     })
   }, [setEuroValor]);  
 
      return (
       <div className="conversor">
-        <h1>Real >>> Euro</h1>
+        <h1>Real  Euro</h1>
         <p>R$<strong>1.00</strong>  Hoje: R$ <strong>{real}</strong></p>
         <input type="text" placeholder="Digite aqui o valor em Real" onChange={e => setValorReal(e.target.value)} ></input>
         

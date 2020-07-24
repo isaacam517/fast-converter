@@ -15,7 +15,7 @@ const real = (parseFloat(1 / dolar).toFixed(2));
 
     useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/USD-BRL').then(response => {
-    console.log(response.data)
+    
     setDolarValor(response.data.USD)     
     })
   }, [setDolarValor]);  

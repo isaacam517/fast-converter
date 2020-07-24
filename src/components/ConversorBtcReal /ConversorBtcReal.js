@@ -1,57 +1,82 @@
 import React, { useState, useEffect } from 'react';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-import styled from 'styled-components'
-import bit from './img/bit.jpg'
+import styled from 'styled-components';
+import bit from './img/bit.jpg';
+import imgbit from './img/imgbit.png';
 
-const Container = styled.div`
-  background-color: #fcfa96;
-  padding: 3%;    
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
-  display:grid;
-  grid-template-areas: "nome nome";                        
-  grid-template-columns: 1.7fr 1fr;  
+
+const Container = styled.div` 
+  min-height: 70%;
+  background-color: #E3E8F0;
+  padding: 1%;    
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);  
   text-align: center;
-  color:black;
+  color:black;  
 `
-const Nome = styled.div`
-  background-color: #c0d9e0;
-  grid-area: nome;
-  margin-bottom: 8%;  
+const Nome = styled.div`    
+  
 `
 const DivAgora = styled.div`
-background-color: #c0d9e0;
     
 `
 const DivInput = styled.div`
-  margin-top: -13%;
-  input{
-    width: 60%;
-    padding: 5%;
+  margin: 2%;
+  input{ 
+   
+  }
+  @media screen and (max-width:480px) {
+    margin-top: -14%;
+    input{
+      width: 60%;
+      padding: 10%;
+    }
   }
 `
-const DivResult = styled.div`
-  margin-top: -8%;
-  font-size: 0.7em;
+const DivResult = styled.div`  
+  font-size: 1em;
+  width:80%;
+  height: 6vh;
+  margin: auto;
+  background-color: #F9F1F0;
+  @media screen and (max-width:480px) {
+    margin-top: -8%;
+  }
 `
-const MinMax = styled.div`
-  background-color: #c0d9e0;
+const MinMax = styled.div`  
   font-size: 0.8em;    
 `
-const Porcent = styled.div`
-  background-color: #c0d9e0;
-`
+
 const ImgBtc = styled.div`
-  height: 12vh;
+  height: 15vh;
+  width: 70%;  
+  margin: auto;  
+  text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
-  background-image: url(${bit});
-  background-size: cover;    
-`
+  background-image: url(${bit}); 
+  background-size: 100% 100%;
+  @media screen and (max-width:480px) {
+    height: 8vh; 
+  }
 
+`
+const ImgBitcoin = styled.div`
+  height: 22vh;
+  width: 100%;  
+  margin: auto;  
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+  background-color: #c0d9e0;
+  background-image: url(${imgbit}); 
+  background-size: 100% 100%;
+  @media screen and (max-width:480px) {
+    height: 8vh; 
+  }
+`
 const ConversorBtcReal = () =>  {
 const [btcValor, setBtcValor] = useState([])
 const [valorReal, setValorReal] = useState (0)
-
 const comprarBtc = (parseFloat(btcValor.bid).toFixed(2));
 const alta = (parseFloat(btcValor.high).toFixed(2));
 const baixa = (parseFloat(btcValor.low).toFixed(2));
@@ -62,39 +87,36 @@ const resultado = (parseFloat(valorReal * comprarBtc).toFixed(2));
 
   useEffect(() => {
     axios.get('https://economia.awesomeapi.com.br/json/all/BTC-BRL').then(response => {
-      console.log(response.data)
+      
       setBtcValor(response.data.BTC)     
     })
   }, [setBtcValor]);  
-
-    return (
-      <Container>
-        <Nome>
-          <h1 className="nome">BITCOIN</h1>        
-        </Nome>
-        <DivResult>
-          <h1>R$ {resultado}</h1>
-        </DivResult>
-        <DivInput>
-          <input type="text" placeholder="Valor aqui" onChange={e => setValorReal(e.target.value)} ></input>
-        </DivInput>
-        <DivAgora>
-          <h3>Agora: R$ <strong>{comprarBtc}</strong></h3>
-        </DivAgora>
-        <MinMax>
-          <p>Máx. R$ {alta}</p>
-          <p>Mín. R$ {baixa}</p>
-        </MinMax>
-          <p>vender R$ {venderBtc}</p>
-          <p>Var. R$ {variacao}</p>
-        <Porcent>
-          <p>Porc. da variação  {pctChange}%</p>
-        </Porcent>
-        <ImgBtc></ImgBtc>
-      </Container>
-    )
-  }
+  
+  return (
+    <Container>
+      <ImgBtc/>
+      <Nome>
+        <h1>BitCoin</h1>        
+      </Nome>
+      <DivResult>
+        <h1>R$ {resultado}</h1>
+      </DivResult>
+      <DivAgora>
+        <h3>฿ 1 = R$ <strong>{comprarBtc}</strong></h3>
+      </DivAgora>
+      <MinMax>
+        <p> Máx. R$ {alta} Mín. R$ {baixa}</p>
+        <p>vender R$ {venderBtc}</p>    
+        {pctChange > 0 ? <p> Var. R$ {variacao} = + {pctChange}%</p> : <p> Var. R$ {variacao} = {pctChange}%</p>}
+      </MinMax>
+      <DivInput>
+        <form  noValidate autoComplete="off">      
+          <TextField type="number" id="outlined-basic" label="฿" variant="outlined" onChange={e => setValorReal(e.target.value)}/>
+        </form>       
+      </DivInput>
+      <ImgBitcoin/>      
+    </Container>
+  )
+}
 
 export default ConversorBtcReal;
-
-

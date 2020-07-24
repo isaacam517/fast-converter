@@ -12,19 +12,25 @@ import franco from './components/ConversorFrancoReal/img/franco.png';
 import lene from './components/ConversorLeneReal /img/lene.png'
 import libras from './components/ConversorLibraReal/img/libras.png';
 import peso from './components/ConversorPesoReal/img/peso.png';
-import shekel from './components/ConversorShekelReal/img/shekel.png';
-
+//import shekel from './components/ConversorShekelReal/img/shekel.png';
 import styled from 'styled-components';
+import ConversorLibraReal from './components/ConversorLibraReal/ConversorLibraReal';
+import ConversorFrancoReal from './components/ConversorFrancoReal/ConversorFrancoReal';
+import ConversorPesoReal from './components/ConversorPesoReal/ConversorPesoReal';
+//import ConversorShekelReal from './components/ConversorShekelReal/ConversorShekelReal';
+import ConversorDolarCadReal from './components/ConversorDolarCadReal/ConversorDolarCadReal';
+import ConversorLeneReal from './components/ConversorLeneReal /ConversorLeneReal';
+import ConversorDolarRealTurismo from './components/ConversorDolarRealTurismo/ConversorDolarRealTurismo';
+
 
 const Container = styled.div`
-  background-color: #F1E1F6;
+  background-color: #E8E8E0;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
   display: grid;
-    grid-template-areas: 'logo' 'topo' 'advert'
-                          'sidenav' 'cards' 'advert' 
-                          'footer' 'footer' 'footer';
-
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 20vh auto 10vh;
+    grid-template-columns: 0.4fr 3fr 0.4fr ;
+    grid-template-rows: 20vh auto 20vh;
     @media screen and (max-width:480px) {
       width: 100vw;     
       display: grid;
@@ -35,7 +41,7 @@ const Container = styled.div`
 `
 const Logo = styled.div`
   
-  padding-left: 35%;
+  
   @media screen and (max-width:480px) {      
     font-size: 0.7em;
     padding-left: 2%;
@@ -43,7 +49,7 @@ const Logo = styled.div`
   }
 `
 const Topo = styled.div`
-   
+  position: relative;
   text-align: center;
   @media screen and (max-width:480px) {
     font-size: 0.8em;
@@ -65,11 +71,25 @@ const Ancora = styled.div`
   } 
   
 `
-const Cards = styled.div`
+const Section = styled.div`
  
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   row-gap: 2vw;
+  column-gap: 2vh;
+  @media screen and (max-width:480px) {
+      display: grid;
+      grid-area: 3;
+    grid-template-columns: 1fr ;    
+  }
+`
+const Cards = styled.div`
+  width:70vw;
+  height: 100vh;
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+   row-gap: 2vw;
   column-gap: 2vh;
   @media screen and (max-width:480px) {
       display: grid;
@@ -142,35 +162,63 @@ function App() {
       </Logo>
       <Topo>
         <h1>FAST CONVERTER</h1>
+        <p>(atualizado a cada 30 segundos)</p>
         <Ancora>          
-            <a href="#dolar"><img src={dolar}/></a>
-            <a href="#euro"><img src={euro}/></a>
-            <a href="#bit"><img src={bit}/></a>
-            <a href="#yuan"><img src={yuan}/></a>
-            <a href="#"><img src={dolarcad}/></a>
-            <a href="#"><img src={franco}/></a>
-            <a href="#"><img src={lene}/></a>
-            <a href="#"><img src={libras}/></a>
-            <a href="#"><img src={peso}/></a>
-            <a href="#"><img src={shekel}/></a>                     
+            <a href="#dolar"><img alt="dolar" src={dolar}/></a>
+            <a href="#euro"><img alt="euro" src={euro}/></a>
+            <a href="#bit"><img alt="bit" src={bit}/></a>
+            <a href="#yuan"><img alt="yuan" src={yuan}/></a>
+            <a href="#dolarcad"><img alt="dolarcad" src={dolarcad}/></a>
+            <a href="#franco"><img alt="franco" src={franco}/></a>
+            <a href="#lene"><img alt="lene" src={lene}/></a>
+            <a href="#libras"><img alt="libras" src={libras}/></a>
+            <a href="#peso"><img alt="peso" src={peso}/></a>
+            {/* <a href="#shekel"><img alt="shekel" src={shekel}/></a>                      */}
         </Ancora>       
       </Topo>
       <Advert1></Advert1>
       <Sidenav></Sidenav>
-      <Cards>
-        <div id="dolar">                
-          <ConversorDolarReal/>          
-        </div>
-        <div id="euro">
-          <ConversorEuroReal/>          
-        </div>
-        <div id="bit">
-          <ConversorBtcReal/>          
-        </div>
-        <div id="yuan">  
-          <ConversorYuanReal/>          
-        </div>         
-      </Cards>
+        <Section>
+          <div>
+          </div>  
+          <Cards>
+            <div id="dolar">                
+              <ConversorDolarReal/>          
+            </div>
+            <div id="dolar">                
+              <ConversorDolarRealTurismo/>          
+            </div>
+            <div id="dolarcad">
+              <ConversorDolarCadReal/>  
+            </div>
+            <div id="euro">
+              <ConversorEuroReal/>          
+            </div>
+            <div id="yuan">  
+              <ConversorYuanReal/>          
+            </div>
+            <div id="libras">
+              <ConversorLibraReal/>  
+            </div> 
+            <div id="franco">
+              <ConversorFrancoReal/>  
+            </div>
+            <div id="peso">
+              <ConversorPesoReal/>  
+            </div>
+            {/* <div id="shekel">
+              <ConversorShekelReal/>  
+            </div> */}
+            <div id="lene">
+              <ConversorLeneReal/>  
+            </div>            
+            <div id="bit">
+              <ConversorBtcReal/>          
+            </div>
+          </Cards>
+          <div>
+          </div> 
+        </Section>       
       <Advert2></Advert2>
       <Footer1></Footer1>
       <Footer2></Footer2>
