@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import styled from 'styled-components'
-import dolar from './img/dolar.png'
-import usa from './img/usa.png'
+import lene from './img/lene.png'
+import japao from './img/japao.png'
 
-const Container = styled.div` 
-  min-height: 70%;
+const Container = styled.div`
+  width: 80%;  
+  height: 100%;  
   background-color: #E3E8F0;
   padding: 1%;    
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);  
@@ -45,79 +46,84 @@ const DivResult = styled.div`
 const MinMax = styled.div`  
   font-size: 0.8em;    
 `
-
-const ImgDolar = styled.div`
-  height: 15vh;
-  width: 70%;  
+const Porcent = styled.div` 
+`
+const ImgLene = styled.div`
+  height: 14vh;
+  width: 14vw;  
   margin: auto;  
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
-  background-image: url(${dolar}); 
+  background-image: url(${lene}); 
   background-size: 100% 100%;
   @media screen and (max-width:480px) {
     height: 8vh; 
   }
 
 `
-const ImgUsa = styled.div`
-  height: 22vh;
+const ImgJapao = styled.div`
+  height: 30vh;
   width: 100%;  
   margin: auto;
   
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
-  background-image: url(${usa}); 
+  background-image: url(${japao}); 
   background-size: 100% 100%;
   @media screen and (max-width:480px) {
     height: 8vh; 
   }
 `
-const ConversorDolarReal = () =>  {
-const [dolarValor, setDolarValor] = useState([])
+const ConversorLeneReal = () =>  {
+const [leneValor, setLeneValor] = useState([])
 const [valorReal, setValorReal] = useState (0)
-const comprarDolar = (parseFloat(dolarValor.bid).toFixed(2));
-const alta = (parseFloat(dolarValor.high).toFixed(2));
-const baixa = (parseFloat(dolarValor.low).toFixed(2));
-const venderDolar = (parseFloat(dolarValor.ask).toFixed(2));
-const variacao = (parseFloat(dolarValor.varBid).toFixed(2));
-const pctChange = (parseFloat(dolarValor.pctChange).toFixed(2));
-const resultado = (parseFloat(valorReal * comprarDolar).toFixed(2));
+const comprarLene = (parseFloat(leneValor.bid).toFixed(2));
+const alta = (parseFloat(leneValor.high).toFixed(2));
+const baixa = (parseFloat(leneValor.low).toFixed(2));
+const venderLene = (parseFloat(leneValor.ask).toFixed(2));
+const variacao = (parseFloat(leneValor.varBid).toFixed(2));
+const pctChange = (parseFloat(leneValor.pctChange).toFixed(2));
+const resultado = (parseFloat(valorReal * comprarLene).toLocaleString('pt-BR'));
 
   useEffect(() => {
-    axios.get('https://economia.awesomeapi.com.br/json/all/USD-BRL').then(response => {
+    axios.get('https://economia.awesomeapi.com.br/json/all/JPY-BRL').then(response => {
       
-      setDolarValor(response.data.USD)     
+      setLeneValor(response.data.JPY)     
     })
-  }, [setDolarValor]);  
+  }, [setLeneValor]);  
   
   return (
     <Container>
-    <ImgDolar/>
+    <ImgLene/>
       <Nome>
-        <h1>Dólar Comercial</h1>        
+        <h1>Lene Japonês</h1>        
       </Nome>
       <DivResult>
         <h1>R$ {resultado}</h1>
       </DivResult>
       <DivAgora>
-        <h3>US $ 1 = R$ <strong>{comprarDolar}</strong></h3>
+        <h3>¥ 1 = R$ <strong>{comprarLene}</strong></h3>
       </DivAgora>
       <MinMax>
-        <p> Máx. R$ {alta} Mín. R$ {baixa}</p>
-        <p>vender R$ {venderDolar}</p>    
-        {pctChange > 0 ? <p> Var. R$ {variacao} = + {pctChange}%</p> : <p> Var. R$ {variacao} = {pctChange}%</p>}
+      <p> Máx. R$ {alta} Mín. R$ {baixa}</p>
       </MinMax>
+        <p>vender R$ {venderLene}</p>
+        <p>Var. R$ {variacao}</p>
+      <Porcent>
+        {pctChange > 0 ? <p>Variação +{pctChange}%</p> : <p>Variação{pctChange}%</p>}
+      </Porcent>
       <DivInput>
         <form  noValidate autoComplete="off">      
-          <TextField type="number" id="outlined-basic" label="US $" variant="outlined" onChange={e => setValorReal(e.target.value)}/>
+          <TextField type="number" id="outlined-basic" label="¥" variant="outlined" onChange={e => setValorReal(e.target.value)}/>
         </form>       
       </DivInput>
-      <ImgUsa/>      
+      <ImgJapao/>      
     </Container>
   )
 }
 
-export default ConversorDolarReal;
+export default ConversorLeneReal;
+
 
