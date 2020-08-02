@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 import styled from 'styled-components';
-import bit from './img/bit.png';
-import imgbit from './img/imgbit.png';
+import ltc from './img/ltc.png';
+import ltc2 from './img/ltc2.png';
 
 
 const Container = styled.div` 
@@ -47,76 +47,76 @@ const MinMax = styled.div`
   font-size: 0.8em;    
 `
 
-const ImgBtc = styled.div`
+const ImgLtc = styled.div`
   height: 15vh;
   width: 70%;  
   margin: auto;  
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
-  background-image: url(${bit}); 
+  background-image: url(${ltc}); 
   background-size: 100% 100%;
   @media screen and (max-width:480px) {
     height: 8vh; 
   }
 
 `
-const ImgBitcoin = styled.div`
+const ImgLtc2 = styled.div`
   height: 22vh;
   width: 100%;  
   margin: auto;  
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
   background-color: #c0d9e0;
-  background-image: url(${imgbit}); 
+  background-image: url(${ltc2}); 
   background-size: 100% 100%;
   @media screen and (max-width:480px) {
     height: 8vh; 
   }
 `
-const ConversorBtcReal = () =>  {
-const [btcValor, setBtcValor] = useState([])
+const ConversorLtcReal = () =>  {
+const [ltcValor, setLtcValor] = useState([])
 const [valorReal, setValorReal] = useState (0)
-const comprarBtc = (parseFloat(btcValor.bid).toFixed(2));
-const alta = (parseFloat(btcValor.high).toFixed(2));
-const baixa = (parseFloat(btcValor.low).toFixed(2));
-const venderBtc = (parseFloat(btcValor.ask).toFixed(2));
-const variacao = (parseFloat(btcValor.varBid).toFixed(2));
-const pctChange = (parseFloat(btcValor.pctChange).toFixed(2));
-const resultado = (parseFloat(valorReal * comprarBtc).toFixed(2));
+const comprarLtc = (parseFloat(ltcValor.bid).toFixed(2));
+const alta = (parseFloat(ltcValor.high).toFixed(2));
+const baixa = (parseFloat(ltcValor.low).toFixed(2));
+const venderLtc = (parseFloat(ltcValor.ask).toFixed(2));
+const variacao = (parseFloat(ltcValor.varBid).toFixed(2));
+const pctChange = (parseFloat(ltcValor.pctChange).toFixed(2));
+const resultado = (parseFloat(valorReal * comprarLtc).toFixed(2));
 
   useEffect(() => {
-    axios.get('https://economia.awesomeapi.com.br/json/all/BTC-BRL').then(response => {
+    axios.get('https://economia.awesomeapi.com.br/json/all/LTC-BRL').then(response => {
       
-      setBtcValor(response.data.BTC)     
+      setLtcValor(response.data.LTC)     
     })
-  }, [setBtcValor]);  
+  }, [setLtcValor]);  
   
   return (
     <Container>
-      <ImgBtc/>
+      <ImgLtc/>
       <Nome>
-        <h1>BitCoin</h1>        
+        <h1>Litecoin</h1>        
       </Nome>
       <DivResult>
         <h1>R$ {resultado}</h1>
       </DivResult>
       <DivAgora>
-        <h3>฿ 1 = R$ <strong>{comprarBtc}</strong></h3>
+        <h3>LTC 1 = R$ <strong>{comprarLtc}</strong></h3>
       </DivAgora>
       <MinMax>
         <p> Máx. R$ {alta} Mín. R$ {baixa}</p>
-        <p>vender R$ {venderBtc}</p>    
+        <p>vender R$ {venderLtc}</p>    
         {pctChange > 0 ? <p> Var. R$ {variacao} = + {pctChange}%</p> : <p> Var. R$ {variacao} = {pctChange}%</p>}
       </MinMax>
       <DivInput>
         <form  noValidate autoComplete="off">      
-          <TextField type="number" id="outlined-basic" label="฿" variant="outlined" onChange={e => setValorReal(e.target.value)}/>
+          <TextField type="number" id="outlined-basic" label="LTC" variant="outlined" onChange={e => setValorReal(e.target.value)}/>
         </form>       
       </DivInput>
-      <ImgBitcoin/>      
+      <ImgLtc2/>      
     </Container>
   )
 }
 
-export default ConversorBtcReal;
+export default ConversorLtcReal;
